@@ -15,7 +15,7 @@ const [NewsMoviesData, setNewsMoviesData] = useState([]);
 
 
 useEffect(() => {
-  fetch('https://mymoviz-backend-ivory-seven.vercel.app/')
+  fetch('https://mymoviz-backend-ivory-seven.vercel.app/movies')
   .then(response => response.json())
   .then(data => {
     // data.movies va chercher la donnée data.results stocké dans la route//
