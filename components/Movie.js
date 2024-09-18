@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faStar, faVideo, faEye } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
+import { Button } from 'antd';
 
 function Movie(props) {
   const [watchCount, setWatchCount] = useState(0);
   const [personalNote, setPersonalNote] = useState(0);
+  const [hoveredMovie, setHoveredMovie] = useState(false); // Etat image du film au survol
 
   // Average evaluation
   const stars = [];
@@ -46,12 +48,25 @@ function Movie(props) {
   }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card}
+    onMouseEnter={() => setHoveredMovie(true)} 
+    onMouseLeave={() => setHoveredMovie(false)}
+    >
+      <div className={styles.imageContainer}>
       <img className={styles.image} src={props.poster} alt={props.title} />
+      {hoveredMovie && (
+        <div className={styles.overlay}>
+          <FontAwesomeIcon icon={faEye} className={styles.eyeIcon} />
+          </div>
+      )}
+      </div>
       <div className={styles.textContainer}>
         <div>
           <span className={styles.name}>{props.title}</span>
           <p className={styles.description}>{props.overview}</p>
+        </div>
+        <div>
+          <Button className={styles.viewButton}>View More</Button>
         </div>
         <div className={styles.iconContainer}>
           <span className={styles.vote}>{stars} ({props.voteCount})</span>

@@ -48,10 +48,9 @@ useEffect(() => {
   );
 
   // Movies list
-// 
   const movies = NewsMoviesData.map((data, i) => {
     const isLiked = likedMovies.some(movie => movie === data.title);
-    // remplacer les données contenu dans le fetch en respecant les .props contenu dans le fichier Movies.js//
+    // remplacer les données contenu dans le fetch en respectant les .props contenu dans le fichier Movies.js//
     return <Movie key={i} updateLikedMovies={updateLikedMovies} isLiked={isLiked} title={data.original_title} overview={data.overview} poster={"https://image.tmdb.org/t/p/w500/" + data.poster_path} voteAverage={data.vote_average} voteCount={data.vote_count} />;
   });
 
@@ -59,8 +58,7 @@ useEffect(() => {
     <div className={styles.main}>
       <div className={styles.header}>
         <div className={styles.logocontainer}>
-          <img src="logo.png" alt="Logo" />
-          <img className={styles.logo} src="logoletter.png" alt="Letter logo" />
+          <img src="LogoMyMovies.png" alt="Logo My movies" />
         </div>
         <Popover title="Liked movies" content={popoverContent} className={styles.popover} trigger="click">
           <Button>♥ {likedMovies.length} movie(s)</Button>
