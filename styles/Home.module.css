@@ -14,7 +14,7 @@
 	height: 90px;
 	background-color: #304352;
 	color: white;
-	padding: 0px 90px 0px 30px;
+	padding: 0px 50px 0px 10px;
 	position: fixed;
 	top: 0;
 	z-index: 1000;
@@ -39,14 +39,9 @@
 }
 
 .logocontainer img {
-	width: 70%;  /* Ajustez cette valeur selon la taille souhaitée */
+	width: 80%;  /* Ajustez cette valeur selon la taille souhaitée */
 	height: auto;  /* Garde les proportions du logo */
   }
-
-.logo {
-	margin-left: 20px;
-	width: 150px;
-}
 
 .moviesContainer {
 	display: flex;
