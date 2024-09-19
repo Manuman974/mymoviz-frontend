@@ -7,7 +7,6 @@ import { Button } from 'antd';
 function Movie(props) {
   const [watchCount, setWatchCount] = useState(0);
   const [personalNote, setPersonalNote] = useState(0);
-  const [hoveredMovie, setHoveredMovie] = useState(false); // Etat image du film au survol
 
   // Average evaluation
   const stars = [];
@@ -48,31 +47,18 @@ function Movie(props) {
   }
 
   return (
-    <div className={styles.card}
-    onMouseEnter={() => setHoveredMovie(true)} 
-    onMouseLeave={() => setHoveredMovie(false)}
-    >
-      <div className={styles.imageContainer}>
+    <div className={styles.card}>
       <img className={styles.image} src={props.poster} alt={props.title} />
-      {hoveredMovie && (
-        <div className={styles.overlay}>
-          <FontAwesomeIcon icon={faEye} className={styles.eyeIcon} />
-          </div>
-      )}
-      </div>
       <div className={styles.textContainer}>
         <div>
           <span className={styles.name}>{props.title}</span>
           <p className={styles.description}>{props.overview}</p>
         </div>
-        <div>
-          <Button className={styles.viewButton}>View More</Button>
-        </div>
         <div className={styles.iconContainer}>
-          <span className={styles.vote}>{stars} ({props.voteCount})</span>
-          <span>{personalStars} ({personalNote})</span>
-          <span><FontAwesomeIcon icon={faVideo} onClick={() => handleWatchMovie()} style={videoIconStyle} className="watch" /> ({watchCount})</span>
-          <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLikeMovie()} style={heartIconStyle} className="like" /></span>
+          <span style={{color: '#728192'}} className={styles.vote}>{stars} ({props.voteCount})</span>
+          <span style={{color: '#728192'}}> {personalStars} ({personalNote})</span>
+          <span style={{color: '#728192',marginTop: '5px'}}><FontAwesomeIcon icon={faVideo} onClick={() => handleWatchMovie()} style={videoIconStyle} className="watch" /> ({watchCount})</span>
+          <span style={{color: '#728192',marginTop: '5px'}}><FontAwesomeIcon icon={faHeart} onClick={() => handleLikeMovie()} style={heartIconStyle} className="like" /></span>
         </div>
       </div>
     </div>

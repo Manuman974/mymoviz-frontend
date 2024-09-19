@@ -60,7 +60,7 @@ useEffect(() => {
         <div className={styles.logocontainer}>
           <img src="LogoMyMovies.png" alt="Logo My movies" />
         </div>
-        <Popover title="Liked movies" content={popoverContent} className={styles.popover} trigger="click">
+        <Popover title="Liked movies" content={popoverContent} className={styles.popover} trigger="click" getPopupContainer={() => document.body}>
           <Button>♥ {likedMovies.length} movie(s)</Button>
         </Popover>
       </div>
