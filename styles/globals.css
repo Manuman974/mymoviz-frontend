@@ -8,8 +8,3 @@ body {
 * {
   box-sizing: border-box;
 }
-
-.ant-popover-placement-bottom {
-	position: fixed !important; /* S'assurer que la règle est prioritaire */
-  top: 50px; /* Ajuste en fonction de l'emplacement souhaité */
-}

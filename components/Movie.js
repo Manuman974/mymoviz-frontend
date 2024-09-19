@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo, faEye } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
-import { Button } from 'antd';
 
 function Movie(props) {
   const [watchCount, setWatchCount] = useState(0);

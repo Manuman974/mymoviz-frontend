@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Popover, Button } from 'antd';
+import { Drawer, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import Movie from './Movie';
@@ -8,9 +8,9 @@ import styles from '../styles/Home.module.css';
 
 function Home() {
   const [likedMovies, setLikedMovies] = useState([]);
+  const [open, setOpen] = useState(false);  // Contrôle la visibilité du Drawer
 
   // Hook d'effet requete vers le webservice//
-  // 
 const [NewsMoviesData, setNewsMoviesData] = useState([]);
 
 
@@ -32,7 +32,7 @@ useEffect(() => {
     }
   };
 
-  const likedMoviesPopover = likedMovies.map((data, i) => {
+  const likedMoviesDrawer = likedMovies.map((data, i) => {
     return (
       <div key={i} className={styles.likedMoviesContainer}>
         <span className="likedMovie">{data}</span>
@@ -40,12 +40,6 @@ useEffect(() => {
       </div>
     );
   });
-
-  const popoverContent = (
-    <div className={styles.popoverContent}>
-      {likedMoviesPopover}
-    </div>
-  );
 
   // Movies list
   const movies = NewsMoviesData.map((data, i) => {
@@ -60,9 +54,10 @@ useEffect(() => {
         <div className={styles.logocontainer}>
           <img src="LogoMyMovies.png" alt="Logo My movies" />
         </div>
-        <Popover title="Liked movies" content={popoverContent} className={styles.popover} trigger="click" getPopupContainer={() => document.body}>
-          <Button>♥ {likedMovies.length} movie(s)</Button>
-        </Popover>
+        <Button className={styles.button} onClick={() => setOpen(true)}>♥ {likedMovies.length} movie(s)</Button>
+        <Drawer className={styles.drawer} title="Liked movies" placement="right" closable={true} onClose={() => setOpen(false)} open={open}>
+          {likedMoviesDrawer}
+        </Drawer>
       </div>
       <div className={styles.title}>LAST RELEASES</div>
       <div className={styles.moviesContainer}>
